@@ -10,6 +10,7 @@ gunicorn = "*"
 whitenoise = "*"
 django-crispy-forms = "*"
 django-bootstrap4 = "*"
+django-ckeditor = "*"
 
 [dev-packages]
 
