@@ -1,0 +1,16 @@
+<!-- templates/article_edit.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Create Article
+{% endblock title %}
+
+{% block content %}
+    <h1>Create Article</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <button class="btn btn-info ml-2" type="submit">Create</button>
+    </form>
+{% endblock content %}

@@ -5,17 +5,23 @@
 {% endblock title %}
 
 {% block content %}
+    <div class="d-flex">
+        <a class="ml-auto" href="{% url 'article_new' %}"><button  type="button" class="btn btn-dark">New article</button></a>
+    </div><br>
   {% for article in articles %}
+
     <div class="card">
         <div class="card-header">
             <a href="{% url 'article_detail' article.pk %}" class="font-weight-bold">{{ article.title }}</a>
             <span class="text-muted">by {{ article.author }} | {{ article.date }}
             </span>
         </div>
-        <div class="card-footer text-center text-muted">
-            <a href="{% url 'article_edit' article.pk %}">Edit</a>
-            <a href="{% url 'article_delete' article.pk %}">Delete</a>
-        </div>
+        {% if user.is_authenticated and article.author == user %}
+            <div class="card-footer text-center text-muted">
+                <a href="{% url 'article_edit' article.pk %}">Edit</a>
+                <a href="{% url 'article_delete' article.pk %}">Delete</a>
+            </div>
+        {% endif %}
     </div>
     <br>
 
